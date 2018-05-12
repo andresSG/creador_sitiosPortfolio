@@ -4,20 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration {
+class CreateTipoProyecto extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('users', function (Blueprint $table) {
-			$table->increments('id');
-			$table->string('name');
-			$table->string('email', 200)->unique();
-			$table->string('password');
-			$table->rememberToken();
-			$table->timestamps();
+		Schema::create('tipos_proyecto', function (Blueprint $table) {
+			$table->increments('id_tipo');
+			$table->string('nombre_proyecto')->unique();
+			$table->string('descripcion', 300);
+			$table->timestamp('created_at');
 			$table->engine = 'InnoDB';
 		});
 	}
@@ -28,6 +26,6 @@ class CreateUsersTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('users');
+		Schema::dropIfExists('tipos_proyecto');
 	}
 }
