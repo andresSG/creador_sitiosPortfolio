@@ -15,10 +15,12 @@ class CreateProyectos extends Migration {
 			$table->increments('id');
 			$table->string('nombre_proyecto', 200)->unique();
 			$table->string('nombre_empresa_marcaPersonal', 120)->unique();
+			$table->string('que_hacemos')->nullable();
 			$table->string('email_corporativo', 160);
 			$table->integer('tipoProyecto_id')->unsigned();
-			$table->foreign('tipoProyecto_id')->references('id_tipo')->on('tipos_proyecto');
+			$table->string('logo');
 			$table->integer('n_exports');
+			$table->integer('contacto_id')->unsigned();
 			$table->timestamps();
 			$table->engine = 'InnoDB';
 		});
