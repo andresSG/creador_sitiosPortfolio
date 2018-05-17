@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="userName" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ old('userName') }}" required autofocus>
+
+                                @if ($errors->has('userName'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('userName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -34,6 +48,20 @@
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="birth" class="col-md-4 col-form-label text-md-right">{{ __('Birth date') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="birth" type="date" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}" required>
+
+                                @if ($errors->has('birth'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('birth') }}</strong>
                                     </span>
                                 @endif
                             </div>
