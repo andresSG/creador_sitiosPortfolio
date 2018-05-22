@@ -50,7 +50,7 @@
 
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ url('/profile/') }}">
                                         {{ __('profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
