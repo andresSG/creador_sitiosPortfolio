@@ -6,16 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Profile') }}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/profile/{user}') }}">
+                    <form method="POST" action="{{ route ('modifiedUser', [$user->userName]) }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" >
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -29,7 +27,8 @@
                             <label for="userName" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ Auth::user()->userName }}" disabled="disabled">
+                            	<input id="userNam" type="text" class="form-control" name="userNam" value="{{ $user->userName }}" hidden="hidden">
+                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ $user->userName }}" disabled="disabled">
 
                                 @if ($errors->has('userName'))
                                     <span class="invalid-feedback">
@@ -43,7 +42,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" >
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -57,7 +56,7 @@
                             <label for="birth" class="col-md-4 col-form-label text-md-right">{{ __('Birth date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birth" type="date" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}">
+                                <input id="birth" type="date" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ $user->birth }}">
 
                                 @if ($errors->has('birth'))
                                     <span class="invalid-feedback">
