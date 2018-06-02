@@ -30,14 +30,14 @@ DB::table('users')
 </script>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">Admin users</div>
 
                 <div class="card-body">
                 	<?php
 $usuariosRegistrados = DB::table('users')->get();
-print "<table class='table-bordered badge table table-hover table-info'><thead>
+print "<table class='table-bordered table-wrapper badge table table-hover table-info'><thead>
 		<tr>
             </b><th> Id</th>
             <th> UserName</th>
@@ -56,7 +56,7 @@ foreach ($usuariosRegistrados as $usuario) {
 	?>
 	<td><a onclick="hacerAdmin('{{ $usuario->userName }}')" href="#">
 	<?php
-if ($usuario->role == 1) {
+if ($usuario->role == 5) {
 		print "<i class='fas fa-check-circle'> Admin</i>";
 	} else {
 		print "<i class='fas fa-times-circle'> No Admin</i>";

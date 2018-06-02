@@ -13,6 +13,8 @@ class AddForeignKeyPoyectosTable extends Migration {
 	public function up() {
 		Schema::table('proyectos', function (Blueprint $table) {
 			$table->foreign('tipoProyecto_id')->references('id_tipo')->on('tipos_proyecto');
+			$table->foreign('creador_id')->references('id')
+				->on('users')->onDelete('cascade');
 			$table->foreign('contacto_id')->references('id_contacto')
 				->on('informacion_contacto')->onDelete('cascade');
 		});
@@ -27,6 +29,7 @@ class AddForeignKeyPoyectosTable extends Migration {
 		Schema::table('proyectos', function (Blueprint $table) {
 			$table->dropForeign('proyectos_tipoproyecto_id_foreign');
 			$table->dropForeign('proyectos_contacto_id_foreign');
+			$table->dropForeign('proyectos_creador_id_foreign');
 		});
 	}
 }

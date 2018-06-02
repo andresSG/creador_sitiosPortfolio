@@ -13,6 +13,7 @@ class CreateProyectos extends Migration {
 	public function up() {
 		Schema::create('proyectos', function (Blueprint $table) {
 			$table->increments('id');
+			$table->integer('creador_id')->unsigned();
 			$table->string('nombre_proyecto', 200)->unique();
 			$table->string('nombre_empresa_marcaPersonal', 120)->unique();
 			$table->string('que_hacemos')->nullable();

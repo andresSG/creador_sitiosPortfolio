@@ -7,6 +7,11 @@ class AdminController extends Controller {
 		//return "under construcction <br>
 		//			<a href='javascript:history.back()'>Go Back</a>";
 
-		return view('admin.adminUsers');
+		if (auth()->user()) {
+			return view('admin.adminUsers');
+		} else {
+			return view('auth.login');
+		}
+
 	}
 }

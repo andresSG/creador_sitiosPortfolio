@@ -1,14 +1,37 @@
 @if(Auth::user())
-<div class="col justify-content-left">
-    <div class="col-md-2">
-        <div class="card">
-            <div class="card-header">Manage Proyects</div>
+<?php $id_user = Auth::user()->id;?>
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+        	<i class="fas fa-archive"> Manage Proyects Menu - </i>
+        	({{$proyectos = DB::table('proyectos')->where('creador_id', $id_user)->count()}})
+        	<a href="" class="right"><i class="fas fa-plus-square"> Add</i></a>
+		</div>
 
-            <div class="card-body">
-				Nuevo proyecto, borrar proyectos
-
-				lista de proyectos
-            </div>
+        <div class="card-body">
+<?php
+$proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nombre_proyecto', 'desc')->get();
+?>
+		<table class='table-wrapper table-bordered badge table table-hover'><thead>
+			<tr>
+		        <th><b> <i class="fas">Proyecto </i></th>
+		        <th> <i class="fas fa-at"> Email Corporativo</i> </th>
+		        <th> <input type='checkbox' name='seleted_all' value='selected_all'> Delete all </input></th>
+		    	</b>
+		    </tr>
+		</thead>
+		<tbody>
+		@foreach ($proyectos as $proyecto)
+		<tr>
+			<td>{{$proyecto->nombre_proyecto}}</td>
+			<td>{{$proyecto->email_corporativo}}</td>
+			<th>
+				<input type='checkbox' name='proyecto_{{$proyecto->nombre_proyecto}}' value='{{$proyecto->id}}'> </input>
+			</th>
+		</tr>
+		@endforeach
+		</tbody>
+		</table>
         </div>
     </div>
 </div>
