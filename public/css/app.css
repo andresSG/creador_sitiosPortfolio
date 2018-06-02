@@ -1,4 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+.table-wrapper {
+  max-width: 300px;
+  width: 90%;
+  margin: 0 auto 0;
+  max-height: 500px;
+  overflow-y: scroll;
+  position: relative;
+  transition: all .2s ease-out;
+  @media(min-width: $screen-sm-min) {
+    background: white;
+    box-shadow: $shadow;
+  }
+}
+/*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.

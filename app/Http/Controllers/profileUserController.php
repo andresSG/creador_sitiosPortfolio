@@ -27,7 +27,7 @@ class profileUserController extends Controller {
 	public function modify(Request $request) {
 		$datosForm = $request;
 
-		if ($user = auth()->user() && auth()->role() === 1) {
+		if ($user = auth()->user() && auth()->user()->role == 1) {
 
 			$editUser = DB::table('users')
 				->where('userName', $datosForm["userNam"])->get()->first();
