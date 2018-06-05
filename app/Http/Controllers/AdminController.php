@@ -14,4 +14,8 @@ class AdminController extends Controller {
 		}
 
 	}
+
+	public funcion makeAdmin(){
+		
+	}
 }
