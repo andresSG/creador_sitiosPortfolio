@@ -3,9 +3,10 @@
 <div class="col-md-4">
     <div class="card">
         <div class="card-header">
-        	<i class="fas fa-archive"> Manage Proyects Menu - </i>
+        	<i class="fas fa-archive"> Proyects Menu - </i>
         	({{$proyectos = DB::table('proyectos')->where('creador_id', $id_user)->count()}})
-        	<a href="" class="right"><i class="fas fa-plus-square"> Add</i></a>
+        	<a href="{{route('newProyect')}}" class="btn btn-success icons-right" role="button"><i class="fas fa-plus-square"> Add </i></a>
+        	<a href="" class="btn btn-danger icons-right" role="button"><i class="fas fa-trash-alt"> Delete </i></a>
 		</div>
 
         <div class="card-body">
@@ -16,7 +17,7 @@ $proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nom
 			<tr>
 		        <th><b> <i class="fas">Proyecto </i></th>
 		        <th> <i class="fas fa-at"> Email Corporativo</i> </th>
-		        <th> <input type='checkbox' name='seleted_all' value='selected_all'> Delete all </input></th>
+		        <th> <input type='checkbox' name='seleted_all' value='selected_all'> <i class="fas fa-trash-alt">  all</i> </input></th>
 		    	</b>
 		    </tr>
 		</thead>

@@ -17,9 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/profile/{user}', 'profileUserController@modify')->name('modifiedUser');
-Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserController@index']);
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminPanel/', 'AdminController@getUsers')->name('adminPanel');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/profile/{user}', 'profileUserController@modify')->name('modifiedUser');
+Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserController@index']);
+
+//genera todas las llamadas entre vista y controler 'php artisan route:list'
+//Route::resource('proyecto', 'ProyectController');
+
+Route::get('/Proyecto/new', 'ProyectController@index')->name('newProyect');
+Route::post('/Proyectos', 'ProyectController@create')->name('createProyect');

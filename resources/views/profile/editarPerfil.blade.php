@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">{{ __('Profile') }}</div>
                 <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route ('modifiedUser', [$user->userName]) }}">
                         @csrf
                         <div class="form-group row">
@@ -28,7 +33,7 @@
 
                             <div class="col-md-6">
                             	<input id="userNam" type="text" class="form-control" name="userNam" value="{{ $user->userName }}" hidden="hidden">
-                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ $user->userName }}" disabled="disabled">
+                                <input id="userName" type="text" class="form-control{{ $errors->has('userName') ? ' is-invalid' : '' }}" name="userName" value="{{ $user->userName }}" disabled="disabled" readonly>
 
                                 @if ($errors->has('userName'))
                                     <span class="invalid-feedback">

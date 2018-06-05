@@ -61,14 +61,14 @@ class profileUserController extends Controller {
 
 			} else {
 				return "No se encuentra el usuario en BD, o acaba de ser eliminado<br>
-					<a href='javascript:history.back()'>Go Back</a>";
+					<a href='javascript:history.back()'> Go Back</a>";
 			}
 
 			$editUser = DB::table('users')
 				->where('userName', $datosForm["userNam"])->get()->first();
 			//recargamos el usuario antes de mostrar el formulario y sus datos
 
-			return view('profile.editarPerfil')->with('user', $editUser);
+			return back()->with('success', 'Modify user Ok')->with('user', $editUser);
 		} else {
 			return "Unahutorized, you must be logged <br>
 					<a href='javascript:history.back()'>Go Back</a>";
