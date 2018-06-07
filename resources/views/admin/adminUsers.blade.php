@@ -5,30 +5,6 @@
 @if(Auth::user())
 
 @if(Auth::user()->role == 1)
-<script type="text/javascript">
-function deseaBorrar(userNameSelected){
-	var resp = confirm("¿Desea borrar usuario '"+userNameSelected+"'?");
-	if(resp){
-		<?php
-DB::table('users')->where('userName', '')->delete();
-
-?>{{route('adminPanel')}}
-	}
-}
-
-function hacerAdmin(userNameSelected){
-	var resp = confirm("¿Hacer admin a este usuario '"+userNameSelected+"'?");
-	if(resp){
-		<?php
-
-DB::table('users')
-	->where('userName', '')
-	->update(['role' => 1, 'updated_at' => new DateTime()]);
-?>
-
-	}
-}
-</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -39,6 +15,11 @@ DB::table('users')
                 	<?php
 $usuariosRegistrados = DB::table('users')->get();
 ?>
+	@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 	<table class='table-bordered table-wrapper badge table table-hover table-info'><thead>
 			<tr>
 	            <th> Id</th>
@@ -60,19 +41,29 @@ $usuariosRegistrados = DB::table('users')->get();
 			</td>
 			<td>  {{$usuario->created_at}} </td>
 			<td>  {{$usuario->updated_at}} </td>
-			<td><a onclick="hacerAdmin('{{ $usuario->userName }}')" href="#">
 			@if($usuario->role == 5)
-					<i class='fas fa-check-circle'> Do Admin</i>
+			<td><form action="{{route ('makeAdmin', [$usuario->id])}}" method="post">
+            		{{csrf_field()}}
+	            	<input name="_method" type="hidden" value="PATCH">
+	            	<button class="btn btn-default" onclick="return confirm('¿Desea hacer admin a este usuario?')" type="submit"><i class='fas fa-check-circle'> Do Admin</i></button>
+          		</form>
 				@else
-					<i class='fas fa-times-circle'> No Admin</i>
+				<td><form action="{{route ('noAdmin', [$usuario->id])}}" method="post">
+            		{{csrf_field()}}
+	            	<input name="_method" type="hidden" value="PATCH">
+	            	<button class="btn btn-primary" onclick="return confirm('¿Desea quitar el admin a este usuario?')" type="submit"><i class='fas fa-times-circle'> No Admin</i></button>
+          		</form>
 			@endif
-				</a>
 			</td>
 			<td>
-				<a href="{{ route ('modifyUser',[$usuario->userName])}}"> Editar <i class="fa fa-edit"></i></a>
+				<a href="{{ route ('modifyUser',[$usuario->userName])}}" class="btn btn-warning"> Editar <i class="fa fa-edit"></i></a>
 			</td>
 			<td>
-				<a onclick="deseaBorrar('{{ $usuario->userName }}')" href="#"> Eliminar <i class="fas fa-trash-alt"></i></a>
+				<form action="{{route ('deleteUser', [$usuario->id])}}" method="post">
+            		{{csrf_field()}}
+	            	<input name="_method" type="hidden" value="DELETE">
+	            	<button class="btn btn-danger" onclick="return confirm('¿Desea eliminar este usuario?')" type="submit">Eliminar <i class="fas fa-trash-alt"></i></button>
+          		</form>
 			</td>
 		</tr>
 	@endforeach
