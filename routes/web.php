@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminPanel/', 'AdminController@getUsers')->name('adminPanel');
+Route::delete('/adminPanel/{id}/delete', 'AdminController@removeUser')->name('deleteUser');
+Route::patch('/adminPanel/{id}/doAdmin', 'AdminController@makeAdmin')->name('makeAdmin');
+Route::patch('/adminPanel/{id}/noAdmin', 'AdminController@noAdmin')->name('noAdmin');
 
 Route::post('/profile/{user}', 'profileUserController@modify')->name('modifiedUser');
 Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserController@index']);
@@ -27,5 +30,6 @@ Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserContr
 //genera todas las llamadas entre vista y controler 'php artisan route:list'
 //Route::resource('proyecto', 'ProyectController');
 
-Route::get('/Proyecto/new', 'ProyectController@index')->name('newProyect');
-Route::post('/Proyectos', 'ProyectController@create')->name('createProyect');
+Route::get('/proyecto/new', 'ProyectController@index')->name('newProyect');
+Route::post('/proyecto', 'ProyectController@create')->name('createProyect');
+Route::post('/proyecto/edit', 'ProyectController@edit')->name('editProyect');
