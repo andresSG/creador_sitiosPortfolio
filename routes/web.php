@@ -20,10 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminPanel/', 'AdminController@getUsers')->name('adminPanel');
+Route::get('/adminProyectos/', 'AdminController@getProyects')->name('adminProyectos');
 Route::delete('/adminPanel/{id}/delete', 'AdminController@removeUser')->name('deleteUser');
 Route::patch('/adminPanel/{id}/doAdmin', 'AdminController@makeAdmin')->name('makeAdmin');
 Route::patch('/adminPanel/{id}/noAdmin', 'AdminController@noAdmin')->name('noAdmin');
 
+Route::post('/admin/profile/{user}', 'profileUserController@indexAdmin')->name('modifyUserByAdmin');
+Route::post('/admin/profile/{user}/ok', 'profileUserController@modifyByAdmin')->name('modifiedUserByAdmin');
 Route::post('/profile/{user}', 'profileUserController@modify')->name('modifiedUser');
 Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserController@index']);
 

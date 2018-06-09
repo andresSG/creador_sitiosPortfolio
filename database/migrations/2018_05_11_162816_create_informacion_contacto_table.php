@@ -11,7 +11,7 @@ class CreateInformacionContactoTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('informacion_contacto', function (Blueprint $table) {
+		Schema::create('informacion_contactos', function (Blueprint $table) {
 			$table->increments('id_contacto');
 			$table->string('localizacion', 320)->nullable();
 			$table->string('mensaje', 700)->nullable();
@@ -28,6 +28,6 @@ class CreateInformacionContactoTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('informacion_contacto');
+		Schema::dropIfExists('informacion_contactos');
 	}
 }

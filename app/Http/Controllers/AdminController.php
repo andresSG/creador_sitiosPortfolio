@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller {
 	public function getUsers() {
@@ -16,7 +17,8 @@ class AdminController extends Controller {
 
 	public function getProyects() {
 		if (auth()->user()) {
-			return view('admin.adminProyects')->with('proyectos', $proyectos = DB::table('proyectos')->get());
+			$proyectos = DB::table('proyectos')->get();
+			return view('admin.adminProyects')->with('proyectos', $proyectos);
 		} else {
 			return view('auth.login');
 		}

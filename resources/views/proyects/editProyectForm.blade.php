@@ -104,7 +104,7 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                             @if (session('contacto'))
                                 <input type="text" value="{{session('contacto')->localizacion}}" class="form-control" name="localizacion" disabled="disabled">
                             @else
-                                <input type="text" class="form-control"  name="localizacion">
+                                <input type="email" class="form-control"  name="localizacion">
                             @endif
                             </div>
                         </div>

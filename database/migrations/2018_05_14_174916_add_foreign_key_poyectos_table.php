@@ -16,7 +16,7 @@ class AddForeignKeyPoyectosTable extends Migration {
 			$table->foreign('creador_id')->references('id')
 				->on('users')->onDelete('cascade');
 			$table->foreign('contacto_id')->references('id_contacto')
-				->on('informacion_contacto')->onDelete('cascade');
+				->on('informacion_contactos')->onDelete('cascade');
 		});
 	}
 

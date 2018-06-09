@@ -56,7 +56,10 @@ $usuariosRegistrados = DB::table('users')->get();
 			@endif
 			</td>
 			<td>
-				<a href="{{ route ('modifyUser',[$usuario->userName])}}" class="btn btn-warning"> Editar <i class="fa fa-edit"></i></a>
+				<form action="{{route ('modifyUserByAdmin', [$usuario->userName])}}" method="POST">
+            		{{csrf_field()}}
+	            	<button class="btn btn-warning" >Editar <i class="fa fa-edit"></i></button>
+          		</form>
 			</td>
 			<td>
 				<form action="{{route ('deleteUser', [$usuario->id])}}" method="post">
