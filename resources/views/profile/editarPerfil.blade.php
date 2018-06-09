@@ -7,12 +7,21 @@
             <div class="card">
                 <div class="card-header">{{ __('Profile') }}</div>
                 <div class="card-body">
+                    @if (isset($success))
+                        <div class="alert alert-success">
+                            {{ $success }}..
+                        </div>
+                    @endif
                     @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if (isset($ruteF))
+                    <form method="POST" action="{{ route ('modifiedUserByAdmin', [$user->userName]) }}">
+                    @else
                     <form method="POST" action="{{ route ('modifiedUser', [$user->userName]) }}">
+                    @endif
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -100,7 +109,7 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="{{ URL::previous() }}">back</a>
+                        <a href="{{ route('home') }}">back</a>
                     </form>
                 </div>
             </div>

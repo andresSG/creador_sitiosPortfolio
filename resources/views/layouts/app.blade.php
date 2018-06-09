@@ -61,6 +61,9 @@
                                     <a class="dropdown-item" href="{{ url('/adminPanel/') }}">
                                         {{ __('Admin users') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/adminProyectos/') }}">
+                                        {{ __('Admin proyects') }}
+                                    </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ url('/profile/'.$userName1) }}">
                                         {{ __('Profile') }}
