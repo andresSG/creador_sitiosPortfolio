@@ -35,4 +35,5 @@ Route::get('/profile/{user}', ['as' => 'modifyUser', 'uses' => 'profileUserContr
 
 Route::get('/proyecto/new', 'ProyectController@index')->name('newProyect');
 Route::post('/proyecto', 'ProyectController@create')->name('createProyect');
-Route::post('/proyecto/edit', 'ProyectController@edit')->name('editProyect');
+Route::get('/proyecto/edit/{id}', 'ProyectController@editShow')->name('editProyect');
+Route::post('/proyecto/edit/{id}', 'ProyectController@editMake')->name('editProyectSave');

@@ -41,16 +41,16 @@ $proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nom
 		    </tr>
 		</thead>
 		<tbody>
-			<form action="leftCardBoard_submit" method="POST" accept-charset="utf-8">
 			@foreach ($proyectos as $proyecto)
 			<tr>
-				<td>{{$proyecto->nombre_proyecto}}</td>
+				<td>
+					<a href="{{route('editProyect', $proyecto->id)}}">{{$proyecto->nombre_proyecto}}</a>
+            	</td>
 				<td>{{$proyecto->email_corporativo}}</td>
-				<th>
+				<td>
 					<input type='checkbox' class="check" name='proyecto_{{$proyecto->nombre_proyecto}}' value='{{$proyecto->id}}' onclick="selectTop()"> </input>
-				</th>
+				</td>
 			</tr>
-			</form>
 			@endforeach
 		</tbody>
 		</table>

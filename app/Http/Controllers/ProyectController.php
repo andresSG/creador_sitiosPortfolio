@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Informacion_contacto;
 use App\Proyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProyectController extends Controller {
 	public function index() {
@@ -48,5 +49,21 @@ class ProyectController extends Controller {
 		$proyecto->save();
 
 		return back()->with('success', 'Proyect has been created')->with('proyecto', $proyecto)->with('contacto', $info_contacto);
+	}
+
+	public function editShow($idProyecto) {
+		$proyectEdit = DB::table('proyectos')
+			->where('id', $idProyecto)->get()->first();
+
+		$contactoEdit = DB::table('informacion_contactos')
+			->where('id_contacto', $proyectEdit->contacto_id)->get();
+
+		return view('proyects.editProyectForm')->with('proyecto', $proyectEdit);
+	}
+
+	public function editMake($idProyecto) {
+		$proyectEdit = DB::table('proyectos')
+			->where('id', $idProyecto)->get()->first();
+
 	}
 }
