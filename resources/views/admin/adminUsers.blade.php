@@ -28,8 +28,6 @@ $usuariosRegistrados = DB::table('users')->get();
 	            <th> Created at </th>
 	            <th> Updated at </th>
 	            <th> ¿Admin? </th>
-	            <th> Edit </th>
-	            <th> Delete </th>
 	        </tr>
         </thead><tbody>
 	@foreach ($usuariosRegistrados as $usuario)

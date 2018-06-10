@@ -108,12 +108,13 @@
                 <div class="links2">
                     <h4 class="h4n">Teconologias y referencias</h4>
                     <a href="https://laravel.com/docs"><i class="fab fa-laravel fa-2x" title="Laravel"></i></a>
+                    <a href="https://colorlib.com/wp/template/balay/"><i class="fas fa-leaf fa-2x" title=" Template Empresa"></i></a>
                     <a href="https://php.net/"><i class="fab fa-php fa-2x" title="Php"> </i></a>
                     <a href="https://fontawesome.com/"><i class="fab fa-font-awesome-flag fa-2x" title="Font Awesome"></i></a>
                     <a href="https://twitter.com/CasualAskep"><i class="fab fa-twitter fa-2x" title="@CasualAskep"> </i></a>
                     <a href="https://github.com/andresSG/creador_sitiosPortfolio"><i class="fab fa-github-square fa-2x" title="GitHub repo"></i></a>
                     <a href="https://mariadb.org/"><i class="fas fa-database fa-2x" title="MariaDB"> </i></a>
-                    <a href="https://colorlib.com/wp/template/glint/"><i class="fas fa-leaf fa-2x" title=" Template html"></i></a>
+                    <a href="https://colorlib.com/wp/template/glint/"><i class="fas fa-leaf fa-2x" title=" Template Portfolio"></i></a>
                 </div>
             </div>
         </div>

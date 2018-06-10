@@ -37,11 +37,19 @@
                         <td> {{$proyecto->tipo_proyecto}} </td>
                         <td> {{$proyecto->n_exports}} </td>
                         <td> {{$proyecto->updated_at}} </td>
-                        <td>  </td>
+                        <td>
+                            <form action="{{route ('deleteProyectAdmin', [$proyecto->contacto_id])}}" method="post">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn btn-danger"
+                            onclick="return confirm('¿Desea eliminar este proyecto y sus datos asociados?')" type="submit">Eliminar <i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
                     </tr>
 		        	@endforeach
                 </tbody>
                 </table>
+                <p class="text-warning">*No se mostrarán, ni se podrán modificar datos sin el consentimiento de los usuarios</p>
         	</div>
     	</div>
 	</div>

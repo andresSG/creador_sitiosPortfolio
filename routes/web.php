@@ -27,6 +27,7 @@ Route::patch('/adminPanel/{id}/doAdmin', 'AdminController@makeAdmin')->name('mak
 Route::patch('/adminPanel/{id}/noAdmin', 'AdminController@noAdmin')->name('noAdmin');
 
 Route::get('/adminProyectos/', 'AdminController@getProyects')->name('adminProyectos');
+Route::delete('/adminProyectos/{id}/delete', 'AdminController@removeProyectAdmin')->name('deleteProyectAdmin');
 
 //editar profile, desde admin y desde cada usuario
 Route::post('/admin/profile/{user}', 'profileUserController@indexAdmin')->name('modifyUserByAdmin');
