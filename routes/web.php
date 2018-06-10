@@ -43,5 +43,5 @@ Route::post('/proyecto', 'ProyectController@create')->name('createProyect');
 Route::get('/proyecto/edit/{id}', 'ProyectController@editShow')->name('editProyect');
 Route::post('/proyecto/edit/{id}', 'ProyectController@editMake')->name('editProyectSave');
 Route::post('/proyecto/delete', 'ProyectController@deleteProyect')->name('deleteProyect');
-
-Route::get('/home/generate_proyect', 'FilesController@generateFile')->name('generateFiles');
+//generar .zip con proyecto
+Route::get('/home/generate_proyect/{id}', 'FilesController@generateFile')->name('generateFiles');
