@@ -27,6 +27,7 @@ Route::patch('/adminPanel/{id}/doAdmin', 'AdminController@makeAdmin')->name('mak
 Route::patch('/adminPanel/{id}/noAdmin', 'AdminController@noAdmin')->name('noAdmin');
 
 Route::get('/adminProyectos/', 'AdminController@getProyects')->name('adminProyectos');
+Route::delete('/adminProyectos/{id}/delete', 'AdminController@removeProyectAdmin')->name('deleteProyectAdmin');
 
 //editar profile, desde admin y desde cada usuario
 Route::post('/admin/profile/{user}', 'profileUserController@indexAdmin')->name('modifyUserByAdmin');
@@ -43,5 +44,5 @@ Route::post('/proyecto', 'ProyectController@create')->name('createProyect');
 Route::get('/proyecto/edit/{id}', 'ProyectController@editShow')->name('editProyect');
 Route::post('/proyecto/edit/{id}', 'ProyectController@editMake')->name('editProyectSave');
 Route::post('/proyecto/delete', 'ProyectController@deleteProyect')->name('deleteProyect');
-
-Route::get('/home/generate_proyect', 'FilesController@generateFile')->name('generateFiles');
+//generar .zip con proyecto
+Route::get('/home/generate_proyect/{id}', 'FilesController@generateFile')->name('generateFiles');
