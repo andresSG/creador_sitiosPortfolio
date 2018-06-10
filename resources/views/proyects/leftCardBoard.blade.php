@@ -54,7 +54,7 @@ $proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nom
 						<input type='checkbox' class="check" name='del[]' value='{{$proyecto->id}}' onclick="selectTop()">
 					</td>
 					<td>
-						<a href="{{route('generateFiles', [$proyecto->id])}}" class="btn btn-info" role="button"><i class="fas fa-plus-square"> Make files </i></a>
+						<a href="{{route('generateFiles', [$proyecto->id])}}" class="btn btn-info" role="button"><i class="fas fa-download"> Download </i></a>
 					</td>
 				</tr>
 				@endforeach

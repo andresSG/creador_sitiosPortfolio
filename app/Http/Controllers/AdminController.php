@@ -17,8 +17,18 @@ class AdminController extends Controller {
 
 	public function getProyects() {
 		if (auth()->user()) {
-			$proyectos = DB::table('proyectos')->get();
-			return view('admin.adminProyects')->with('proyectos', $proyectos);
+			if (auth()->user()->role == 1) {
+				$proyectos = DB::table('proyectos')
+					->join('users', 'users.id', '=', 'proyectos.creador_id')
+					->join('tipos_proyecto', 'tipos_proyecto.id_tipo', '=', 'proyectos.tipoProyecto_id')
+					->select('proyectos.id', 'proyectos.nombre_proyecto', 'proyectos.nombre_empresa_marcaPersonal',
+						'proyectos.email_corporativo', 'proyectos.n_exports', 'proyectos.updated_at', 'tipos_proyecto.tipo_proyecto', 'users.userName', 'proyectos.contacto_id')
+					->get();
+
+				return view('admin.adminProyects')->with('proyectos', $proyectos);
+			} else {
+				view('home');
+			}
 		} else {
 			return view('auth.login');
 		}

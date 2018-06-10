@@ -43,21 +43,21 @@
                           <div class="form-group col-md-8">
                             <label for="tipo_proyecto">Tipo de proyecto :</label>
                             <?php
-$tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->get();
+$tiposPros = DB::table('tipos_proyecto')->orderBy('tipo_proyecto', 'desc')->get();
 ?>                              @if (isset($proyecto))
                                 <select class="form-control" id="tipo_proyecto" name="tipo_proyecto">
                                     @foreach ($tiposPros as $tipo)
                                         @if ($tipo->id_tipo == ($proyecto->tipoProyecto_id))
-                                            <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}" selected >{{$tipo->nombre_proyecto}}</option>
+                                            <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}" selected >{{$tipo->tipo_proyecto}}</option>
                                         @else
-                                            <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}")>{{$tipo->nombre_proyecto}}</option>
+                                            <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}")>{{$tipo->tipo_proyecto}}</option>
                                         @endif
                                     @endforeach
                                 </select>
                                 @else
                                 <select class="form-control" id="tipo_proyecto" name="tipo_proyecto" disabled="disabled">
                                     @foreach ($tiposPros as $tipo)
-                                        <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}">{{$tipo->nombre_proyecto}}</option>
+                                        <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}">{{$tipo->tipo_proyecto}}</option>
                                     @endforeach
                                 </select>
                                 @endif

@@ -11,14 +11,14 @@ class rellenaTiposProyectos extends Seeder {
 	public function run() {
 		DB::table('tipos_proyecto')->insert(
 			array(
-				'nombre_proyecto' => 'Empresa',
+				'tipo_proyecto' => 'Empresa',
 				'descripcion' => 'Dedicado a proyectos empresariales o sociedades',
 			)
 		);
 
 		DB::table('tipos_proyecto')->insert(
 			array(
-				'nombre_proyecto' => 'Portfolio',
+				'tipo_proyecto' => 'Portfolio',
 				'descripcion' => 'Proyectos de marca personal, o en solitario',
 			)
 		);

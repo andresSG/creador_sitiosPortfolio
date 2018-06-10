@@ -23,10 +23,12 @@ class FilesController extends Controller {
 		//comprobamos el tipo y obtenemos los ficheros, pasando los datos relativos a las tablas
 		//proyectos e informacion_contactos//empresa 1, portfolio 2 -> por ahora a pincho ya lo actualizaré
 		if ($proyectoData->tipoProyecto_id == 1) {
+			$this->createLectorProperties($ruteEmpresa);
 			$this->writeProperties($ruteEmpresa, $proyectoData, $contactData);
 			$files = glob(public_path($ruteEmpresa . '/*'));
 			//return var_dump(glob(public_path($ruteEmpresa . '/*')));exit;
 		} else {
+			$this->createLectorProperties($rutePortFolio);
 			$this->writeProperties($rutePortFolio, $proyectoData, $contactData);
 			$files = glob(public_path($rutePortFolio . '/*'));
 		}
@@ -42,30 +44,54 @@ class FilesController extends Controller {
 
 	private function writeProperties($ruta, $proyectosData, $contactosData) {
 		//$fp = fopen("./laravel/andres_t/" . date("Ymd") . $ultimo . ".html", "w+") or die("Unable to open file!");
-		$fp = fopen($ruta . "/properties.txt", "w+") or die("Unable to open file!");
+		$fp = fopen($ruta . "/properties.txt", "w+") or die("Unable to open file!");//se abre fichero properties
 		//columnas
 		$colProyectos = DB::getSchemaBuilder()->getColumnListing('proyectos');
 		$colContactos = DB::getSchemaBuilder()->getColumnListing('informacion_contactos');
 
 		$contenido = "";
 		foreach ($colProyectos as $colProyect) {
-			if ($colProyect == "created_at" or $colProyect == "updated_at" or $colProyect == "tipoProyecto_id") {
+			//solo se mostrarán los campos diferentes a updated...etc
+			if ($colProyect == "created_at" or $colProyect == "updated_at" or $colProyect == "tipoProyecto_id" or $colProyect == "id" or $colProyect == "contacto_id" or $colProyect == "creador_id") {
 				//nothing
 			} else {
-				$contenido .= $colProyect . "=" . $proyectosData->$colProyect . ";" . "\r\n";
+				$contenido .= $colProyect . "=" . $proyectosData->$colProyect . "\r\n";
 			}
 		}
 		foreach ($colContactos as $colContact) {
-			if ($colProyect == "created_at" or $colProyect == "updated_at" or $colProyect == "tipoProyecto_id") {
+			if ($colContact == "created_at" or $colContact == "updated_at" or $colContact == "id_contacto") {
 			} else {
-				$contenido .= $colContact . "=" . $contactosData->$colContact . ";";
+				$contenido .= $colContact . "=" . $contactosData->$colContact . "\r\n";
 			}
 
 		}
 
-		//echo $fp;
 		fwrite($fp, $contenido);
 		fclose($fp);
+	}
+
+	private function createLectorProperties($ruta){
+		$fp = fopen($ruta . "lectorProperties.php", "w+") or die("Unable to open file!");
+		$contenido = "<?php
+			public function obtainData($clave_obtener){
+				$fp = fopen('properties.txt', 'r');
+				$propiedades = array();
+				$valorDevuelto= '';
+				while (!feof($fp)){
+				    $linea = fgets($fp);
+				    list($clave, $valor) = split('=', $linea);
+				    $propiedades[$clave] = $valor;
+			    if ($clave == $clave_obtener) {
+			    	$valorDevuelto = $valor;
+			    }
+			}
+
+			fclose($fp);
+			
+			return $valorDevuelto;
+			}
+
+			?>"
 	}
 
 }

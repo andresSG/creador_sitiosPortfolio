@@ -13,7 +13,7 @@ class CreateTipoProyecto extends Migration {
 	public function up() {
 		Schema::create('tipos_proyecto', function (Blueprint $table) {
 			$table->increments('id_tipo');
-			$table->string('nombre_proyecto')->unique();
+			$table->string('tipo_proyecto')->unique();
 			$table->string('descripcion', 300);
 			$table->timestamp('created_at');
 			$table->engine = 'InnoDB';
