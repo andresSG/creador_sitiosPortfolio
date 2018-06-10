@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">New Proyect</div>
+                <div class="card-header">Edit proyect</div>
 
                 <div class="card-body">
                     @if (session('success'))
@@ -25,16 +25,16 @@
                         </div><br />
                     @endif
 
-                    <form method="post" action="{{route('createProyect')}}">
+                    <form method="post" action="{{ route('editProyectSave', [$proyecto->id])}}">
                         {{csrf_field()}}
                         <div class="row">
                           <div class="col-md-2"></div>
                           <div class="form-group col-md-8">
                             <label for="nombre_proyecto">Proyecto :</label>
-                            @if (session('proyecto'))
-                                <input type="text" class="form-control" value="{{session('proyecto')->nombre_proyecto}}" name="nombre_proyecto" disabled="disabled">
+                            @if (isset($proyecto))
+                                <input type="text" class="form-control" value="{{$proyecto->nombre_proyecto}}" name="nombre_proyecto" disabled="disabled">
                             @else
-                                <input type="text" class="form-control" value="" name="nombre_proyecto" >
+                                <input type="text" class="form-control" value="" name="nombre_proyecto" disabled="disabled">
                             @endif
                           </div>
                         </div>
@@ -44,10 +44,10 @@
                             <label for="tipo_proyecto">Tipo de proyecto :</label>
                             <?php
 $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->get();
-?>                              @if (session('proyecto'))
-                                <select class="form-control" id="tipo_proyecto" name="tipo_proyecto" disabled="disabled">
+?>                              @if (isset($proyecto))
+                                <select class="form-control" id="tipo_proyecto" name="tipo_proyecto">
                                     @foreach ($tiposPros as $tipo)
-                                        @if ($tipo->id_tipo == (session('proyecto')->tipoProyecto_id))
+                                        @if ($tipo->id_tipo == ($proyecto->tipoProyecto_id))
                                             <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}" selected >{{$tipo->nombre_proyecto}}</option>
                                         @else
                                             <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}")>{{$tipo->nombre_proyecto}}</option>
@@ -55,22 +55,22 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                                     @endforeach
                                 </select>
                                 @else
-                                <select class="form-control" id="tipo_proyecto" name="tipo_proyecto">
+                                <select class="form-control" id="tipo_proyecto" name="tipo_proyecto" disabled="disabled">
                                     @foreach ($tiposPros as $tipo)
                                         <option value="{{$tipo->id_tipo}}" name="{{$tipo->id_tipo}}">{{$tipo->nombre_proyecto}}</option>
                                     @endforeach
-                                @endif
                                 </select>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
                           <div class="col-md-2"></div>
                           <div class="form-group col-md-8">
                             <label for="nombre_empresa_marcaPersonal">Nombre Empresa/Marca personal:</label>
-                            @if (session('proyecto'))
-                                <input type="text" class="form-control" value="{{session('proyecto')->nombre_empresa_marcaPersonal}}" name="nombre_empresa_marcaPersonal" disabled="disabled">
+                            @if (isset($proyecto))
+                                <input type="text" class="form-control" value="{{$proyecto->nombre_empresa_marcaPersonal}}" name="nombre_empresa_marcaPersonal" disabled="disabled">
                             @else
-                                <input type="text" class="form-control" name="nombre_empresa_marcaPersonal">
+                                <input type="text" class="form-control" name="nombre_empresa_marcaPersonal" disabled="disabled">
                             @endif
                           </div>
                         </div>
@@ -78,10 +78,10 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="que_hacemos">Indica una Frase sobre tu empresa o actividad:</label>
-                              @if (session('proyecto'))
-                                <textarea type="text" value="{{session('proyecto')->que_hacemos}}" class="form-control" rows="3" name="que_hacemos" disabled="disabled">{{session('proyecto')->que_hacemos}}</textarea>
+                              @if (isset($proyecto))
+                                <textarea type="text" value="{{$proyecto->que_hacemos}}" class="form-control" rows="3" name="que_hacemos" >{{$proyecto->que_hacemos}}</textarea>
                               @else
-                                <textarea type="text" class="form-control" rows="3" name="que_hacemos"></textarea>
+                                <textarea type="text" class="form-control" rows="3" name="que_hacemos" disabled="disabled"></textarea>
                               @endif
                             </div>
                         </div>
@@ -89,10 +89,10 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="email_corporativo">Email corporativo: </label>
-                            @if (session('proyecto'))
-                                <input type="email" value="{{session('proyecto')->email_corporativo}}" class="form-control" name="email_corporativo" disabled="disabled">
+                            @if (isset($proyecto))
+                                <input type="email" value="{{$proyecto->email_corporativo}}" class="form-control" name="email_corporativo" disabled="disabled">
                             @else
-                                <input type="email" class="form-control"  name="email_corporativo" >
+                                <input type="email" class="form-control"  name="email_corporativo" disabled="disabled">
                             @endif
                             </div>
                         </div>
@@ -101,10 +101,10 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="localizacion">Localización: </label>
-                            @if (session('contacto'))
-                                <input type="text" value="{{session('contacto')->localizacion}}" class="form-control" name="localizacion" disabled="disabled">
+                            @if (isset($contacto))
+                                <input type="text" value="{{$contacto->localizacion}}" class="form-control" name="localizacion" >
                             @else
-                                <input type="email" class="form-control"  name="localizacion">
+                                <input type="email" class="form-control"  name="localizacion" disabled="disabled">
                             @endif
                             </div>
                         </div>
@@ -112,10 +112,10 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="mensaje">Mensaje formulario de contacto </label>
-                            @if (session('contacto'))
-                                <textarea type="text" value="{{session('contacto')->mensaje}}" class="form-control" rows="3" name="mensaje" disabled="disabled">{{session('contacto')->mensaje}}</textarea>
+                            @if (isset($contacto))
+                                <textarea type="text" value="" class="form-control" rows="3" name="mensaje" >{{$contacto->mensaje}}</textarea>
                             @else
-                                <textarea type="text"  class="form-control" rows="3" name="mensaje" ></textarea>
+                                <textarea type="text"  class="form-control" rows="3" name="mensaje" disabled="disabled"></textarea>
                             @endif
                             </div>
                         </div>
@@ -123,10 +123,10 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="fax"> Numero de fax: </label>
-                            @if (session('contacto'))
-                                <input type="tel" value="{{session('contacto')->fax}}" class="form-control" name="fax" disabled="disabled">
+                            @if (isset($contacto))
+                                <input type="tel" value="{{$contacto->fax}}" class="form-control" name="fax" >
                             @else
-                                <input type="tel" class="form-control" size="9" name="fax">
+                                <input type="tel" class="form-control" size="9" name="fax" disabled="disabled">
                             @endif
                             </div>
                         </div>
@@ -134,22 +134,22 @@ $tiposPros = DB::table('tipos_proyecto')->orderBy('nombre_proyecto', 'desc')->ge
                           <div class="col-md-2"></div>
                             <div class="form-group col-md-8">
                               <label for="telefono"> Numero de teléfono: </label>
-                            @if (session('contacto'))
-                                <input type="tel" value="{{session('contacto')->telefono}}" class="form-control" name="telefono" disabled="disabled">
+                            @if (isset($contacto))
+                                <input type="tel" value="{{$contacto->telefono}}" class="form-control" name="telefono" >
                             @else
-                                <input type="tel" class="form-control" size="9" name="telefono">
+                                <input type="tel" class="form-control" size="9" name="telefono" disabled="disabled">
                             @endif
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-3"></div>
-                            @if (session('proyecto'))
-                                <a href="{{route('home')}}" class="btn btn-info" style="margin-left:38px">
-                                Volver atrás</a>
-                            @else
+                            @if (isset($proyecto))
                                 <button type="submit" class="btn btn-success" style="margin-left:38px">
-                                Create Proyect</button>
+                                Edit Proyect</button>
+                            @else
+                                <a href="{{route('home')}}" class="btn btn-info" style="margin-left:38px">
+                                Volver atrás, hubo algún error</a>
                             @endif
                         </div>
                     </form>
