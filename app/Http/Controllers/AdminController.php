@@ -25,24 +25,36 @@ class AdminController extends Controller {
 	}
 
 	public function makeAdmin($id) {
-		$usuarioup = User::find($id);
-		$usuarioup->role = 1;
-		//$usuarioup->update_at = date("Y-m-d H:i:s");
-		$usuarioup->save();
-		return view('admin.adminUsers')->with('success', 'User is Upgrade to Admin');
+		if (auth()->user()->role == 1) {
+			$usuarioup = User::find($id);
+			$usuarioup->role = 1;
+			//$usuarioup->update_at = date("Y-m-d H:i:s");
+			$usuarioup->save();
+			return view('admin.adminUsers')->with('success', 'User is Upgrade to Admin');
+		} else {
+			return view('home');
+		}
 	}
 
 	public function noAdmin($id) {
-		$usuarioup = User::find($id);
-		$usuarioup->role = 5;
-		//$usuarioup->update_at = date("Y-m-d H:i:s");
-		$usuarioup->save();
-		return view('admin.adminUsers')->with('success', 'Admin is downgrade to User');
+		if (auth()->user()->role == 1) {
+			$usuarioup = User::find($id);
+			$usuarioup->role = 5;
+			//$usuarioup->update_at = date("Y-m-d H:i:s");
+			$usuarioup->save();
+			return view('admin.adminUsers')->with('success', 'Admin is downgrade to User');
+		} else {
+			return view('home');
+		}
 	}
 
 	public function removeUser($id) {
-		$usuarioDel = User::find($id);
-		$usuarioDel->delete();
-		return view('admin.adminUsers')->with('success', 'User has been Deleted');
+		if (auth()->user()->role == 1) {
+			$usuarioDel = User::find($id);
+			$usuarioDel->delete();
+			return view('admin.adminUsers')->with('success', 'User has been Deleted');
+		} else {
+			return view('home');
+		}
 	}
 }

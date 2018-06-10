@@ -18,8 +18,15 @@ class rellenaMaestros extends Seeder {
 
 		DB::table('master')->insert(
 			array(
-				'key' => 'in_path',
-				'value' => '../resources/generatedHTML/',
+				'key' => 'empresa_path',
+				'value' => '../resources/generatedHTML/empresa',
+			)
+		);
+
+		DB::table('master')->insert(
+			array(
+				'key' => 'portfolio_path',
+				'value' => '../resources/generatedHTML/portfolio',
 			)
 		);
 

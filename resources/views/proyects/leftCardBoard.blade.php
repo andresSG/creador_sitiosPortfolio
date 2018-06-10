@@ -25,13 +25,14 @@
         	<i class="fas fa-archive"> Proyects Menu - </i>
         	({{$proyectos = DB::table('proyectos')->where('creador_id', $id_user)->count()}})
         	<a href="{{route('newProyect')}}" class="btn btn-success icons-right" role="button"><i class="fas fa-plus-square"> Add </i></a>
-        	<a href="" class="btn btn-danger icons-right" role="button"><i class="fas fa-trash-alt"> Delete </i></a>
+        	<button class="btn btn-danger icons-right" type="submit" form="proyectosDel" onclick="return confirm('¿Desea eliminar usuario/s?')" value="submit"><i class='fas fa-trash-alt' > Delete </i></button>
 		</div>
 
         <div class="card-body">
 <?php
 $proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nombre_proyecto', 'desc')->get();
 ?>
+<form action="{{route ('deleteProyect')}}" name="proyectosDel" id="proyectosDel" method="POST">
 		<table class='table-wrapper table-bordered badge table table-hover'><thead>
 			<tr>
 		        <th><b> <i class="fas">Proyecto </i></th>
@@ -40,20 +41,25 @@ $proyectos = DB::table('proyectos')->where('creador_id', $id_user)->orderBy('nom
 		    	</b>
 		    </tr>
 		</thead>
+
 		<tbody>
-			@foreach ($proyectos as $proyecto)
-			<tr>
-				<td>
-					<a href="{{route('editProyect', $proyecto->id)}}">{{$proyecto->nombre_proyecto}}</a>
-            	</td>
-				<td>{{$proyecto->email_corporativo}}</td>
-				<td>
-					<input type='checkbox' class="check" name='proyecto_{{$proyecto->nombre_proyecto}}' value='{{$proyecto->id}}' onclick="selectTop()"> </input>
-				</td>
-			</tr>
-			@endforeach
+				<!--<input name="_method" type="hidden" value="DELETE">-->
+				@foreach ($proyectos as $proyecto)
+				<tr>
+					<td>
+						<a href="{{route('editProyect', $proyecto->id)}}">{{$proyecto->nombre_proyecto}}</a>
+	            	</td>
+					<td>{{$proyecto->email_corporativo}}</td>
+					<td>{{ csrf_field() }}
+						<input type='checkbox' class="check" name='del[]' value='{{$proyecto->id}}' onclick="selectTop()">
+					</td>
+					<td>
+						<a href="{{route('generateFiles')}}" class="btn btn-info" role="button"><i class="fas fa-plus-square"> Make files </i></a>
+					</td>
+				</tr>
+				@endforeach
 		</tbody>
-		</table>
+		</table></form>
         </div>
     </div>
 </div>
