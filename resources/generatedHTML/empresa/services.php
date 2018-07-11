@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
+<?php
+include "lectorProperties.php";?>
 <html>
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Balay Template</title>
+	<title><?php print obtainData("nombre_proyecto");?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -24,7 +26,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -53,15 +55,15 @@
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-			<h1 id="colorlib-logo"><a href="index.html">Balay</a></h1>
+			<h1 id="colorlib-logo"><a href="index.php"><?php print obtainData("nombre_proyecto");?></a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="work.html">Project</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li class="colorlib-active"><a href="contact.html">Contact</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="work.php">Project</a></li>
+					<li><a href="about.php">About</a></li>
+					<li class="colorlib-active"><a href="services.php">Services</a></li>
+					<li><a href="blog.php">Blog</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 			</nav>
 
@@ -80,73 +82,112 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</aside>
 
 		<div id="colorlib-main">
-
-			<div class="colorlib-contact">
+			<div class="colorlib-services">
 				<div class="colorlib-narrow-content">
 					<div class="row">
-						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta">Read</span>
-							<h2 class="colorlib-heading">Get in Touch</h2>
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Services</span>
+							<h2 class="colorlib-heading">Here are some of our expertise</h2>
+						</div>
+					</div>
+					<div class="row row-bottom-padded-md">
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-worker"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>General Conctructing</h3>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+										</div>
+									</div>
+
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-sketch"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>Pre-Contruction Design</h3>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-engineering"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>Building &amp; Modeling</h3>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+										</div>
+									</div>
+
+									<div class="colorlib-feature animate-box" data-animate-effect="fadeInLeft">
+										<div class="colorlib-icon">
+											<i class="flaticon-crane"></i>
+										</div>
+										<div class="colorlib-text">
+											<h3>Construction Management</h3>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-5">
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-								<div class="colorlib-icon">
-									<i class="icon-globe-outline"></i>
+						<div class="col-md-4">
+							<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+								<div class="services-img" style="background-image: url(images/services-1.jpg)"></div>
+								<div class="desc">
+									<h3>Design &amp; Build</h3>
 								</div>
-								<div class="colorlib-text">
-									<p><a href="#">info@domain.com</a></p>
-								</div>
-							</div>
-
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-								<div class="colorlib-icon">
-									<i class="icon-map"></i>
-								</div>
-								<div class="colorlib-text">
-									<p>198 West 21th Street, Suite 721 New York NY 10016</p>
-								</div>
-							</div>
-
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-								<div class="colorlib-icon">
-									<i class="icon-phone"></i>
-								</div>
-								<div class="colorlib-text">
-									<p><a href="tel://">+123 456 7890</a></p>
-								</div>
-							</div>
+							</a>
 						</div>
-						<div class="col-md-7 col-md-push-1">
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-									<form action="">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name">
-										</div>
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email">
-										</div>
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Subject">
-										</div>
-										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-										</div>
-										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
-										</div>
-									</form>
+						<div class="col-md-4">
+							<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+								<div class="services-img" style="background-image: url(images/services-2.jpg)"></div>
+								<div class="desc">
+									<h3>House Remodeling</h3>
 								</div>
-								
-							</div>
+							</a>
+						</div>
+						<div class="col-md-4">
+							<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+								<div class="services-img" style="background-image: url(images/services-3.jpg)"></div>
+								<div class="desc">
+									<h3>Construction Management</h3>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+								<div class="services-img" style="background-image: url(images/services-4.jpg)"></div>
+								<div class="desc">
+									<h3>Painting &amp; Tiling</h3>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4">
+							<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+								<div class="services-img" style="background-image: url(images/services-5.jpg)"></div>
+								<div class="desc">
+									<h3>Kitchen Remodeling</h3>
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div id="map"></div>	
 
 			<div id="get-in-touch" class="colorlib-bg-color">
 				<div class="colorlib-narrow-content">
@@ -160,7 +201,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 							<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -183,11 +224,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/owl.carousel.min.js"></script>
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

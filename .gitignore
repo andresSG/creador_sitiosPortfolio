@@ -14,3 +14,5 @@ yarn-error.log
 resources/generatedHTML/*.zip
 resources/generatedHTML/empresa/properties.txt
 resources/generatedHTML/portfolio/properties.txt
+resources/generatedHTML/empresa/lectorProperties.php
+resources/generatedHTML/portfolio/lectorProperties.php

@@ -23,13 +23,18 @@ class FilesController extends Controller {
 		//comprobamos el tipo y obtenemos los ficheros, pasando los datos relativos a las tablas
 		//proyectos e informacion_contactos//empresa 1, portfolio 2 -> por ahora a pincho ya lo actualizaré
 		if ($proyectoData->tipoProyecto_id == 1) {
-			//$this->createLectorProperties($ruteEmpresa);
+			$this->createLectorProperties($ruteEmpresa);
 			$this->writeProperties($ruteEmpresa, $proyectoData, $contactData);
-			$files = glob(public_path($ruteEmpresa . '/*'));
+			$files = glob(public_path($ruteEmpresa . '/'));
 		} else {
-			//$this->createLectorProperties($rutePortFolio);
+			$this->createLectorProperties($rutePortFolio);
 			$this->writeProperties($rutePortFolio, $proyectoData, $contactData);
-			$files = glob(public_path($rutePortFolio . '/*'));
+			$files = glob(public_path($rutePortFolio . '/'));
+		}
+
+		//borramos primero el zip si existe
+		if (is_file(public_path($ruteOUT . $proyectoData->nombre_proyecto . '.zip'))) {
+			unlink(public_path($ruteOUT . $proyectoData->nombre_proyecto . '.zip'));
 		}
 
 		//escribimos zip
@@ -71,23 +76,24 @@ class FilesController extends Controller {
 
 	private function createLectorProperties($ruta) {
 		//creará un lector para el fichero properties.txt
+		//se parten las variables y el return porque laravel las interpretaría
 		$fp = fopen($ruta . "/lectorProperties.php", "w+") or die("Unable to open file!");
-		$contenido = "<?php public function obtainData($clave_obtener){
-				$fp = fopen('properties.txt', 'r');
-				$propiedades = array();
-				$valorDevuelto= '';
-				while (!feof($fp)){
-				    $linea = fgets($fp);
-				    list($clave, $valor) = split('=', $linea);
-				    $propiedades[$clave] = $valor;
-			    if ($clave == $clave_obtener) {
-			    	$valorDevuelto = $valor;
+		$contenido = "<?php function obtainData($" . "clave_obtener){
+				$" . "fp = fopen('properties.txt', 'r');
+				$" . "propiedades = array();
+				$" . "valorDevuelto= '';
+				while (!feof($" . "fp)){
+				    $" . "linea = fgets($" . "fp);
+				    list($" . "clave, $" . "valor) = explode('=', $" . "linea);
+				    $" . "propiedades[$" . "clave] = $" . "valor;
+			    if ($" . "clave == $" . "clave_obtener) {
+			    	$" . "valorDevuelto = $" . "valor;
 			    }
 			}
 
-			fclose($fp);
+			fclose($" . "fp);
 
-			return $valorDevuelto;
+			re" . "turn $" . "valorDevuelto;
 			}
 
 			?>";
