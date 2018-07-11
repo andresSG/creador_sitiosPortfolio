@@ -4,7 +4,7 @@
 				$valorDevuelto= '';
 				while (!feof($fp)){
 				    $linea = fgets($fp);
-				    list($clave, $valor) = split('=', $linea);
+				    list($clave, $valor) = explode('=', $linea);
 				    $propiedades[$clave] = $valor;
 			    if ($clave == $clave_obtener) {
 			    	$valorDevuelto = $valor;

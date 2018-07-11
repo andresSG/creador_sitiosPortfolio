@@ -32,6 +32,11 @@ class FilesController extends Controller {
 			$files = glob(public_path($rutePortFolio . '/'));
 		}
 
+		//borramos primero el zip si existe
+		if (is_file(public_path($ruteOUT . $proyectoData->nombre_proyecto . '.zip'))) {
+			unlink(public_path($ruteOUT . $proyectoData->nombre_proyecto . '.zip'));
+		}
+
 		//escribimos zip
 		\Zipper::make(public_path($ruteOUT . $proyectoData->nombre_proyecto . '.zip'))->add($files)->close();
 

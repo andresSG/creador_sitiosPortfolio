@@ -59,11 +59,11 @@ include "lectorProperties.php";?>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="index.php">Home</a></li>
-					<li><a href="work.html">Project</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="work.php">Project</a></li>
+					<li><a href="about.php">About</a></li>
+					<li><a href="services.php">Services</a></li>
+					<li><a href="blog.php">Blog</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 			</nav>
 
@@ -148,8 +148,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="about-desc">
 								<span class="heading-meta">Welcome</span>
 								<h2 class="colorlib-heading">Who we are</h2>
-								<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+								<p><?php print obtainData("que_hacemos");?></p>
 							</div>
 							<div class="row padding">
 								<div class="col-md-4 no-gutters animate-box" data-animate-effect="fadeInLeft">
@@ -233,19 +232,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-6">
-									<a href="services.html" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+									<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
 										<div class="services-img" style="background-image: url(images/services-1.jpg)"></div>
 										<div class="desc">
 											<h3>Design &amp; Build</h3>
 										</div>
 									</a>
-									<a href="services.html" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+									<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
 										<div class="services-img" style="background-image: url(images/services-2.jpg)"></div>
 										<div class="desc">
 											<h3>House Remodeling</h3>
 										</div>
 									</a>
-									<a href="services.html" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+									<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
 										<div class="services-img" style="background-image: url(images/services-3.jpg)"></div>
 										<div class="desc">
 											<h3>Construction Management</h3>
@@ -253,13 +252,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									</a>
 								</div>
 								<div class="col-md-6 move-bottom">
-									<a href="services.html" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+									<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
 										<div class="services-img" style="background-image: url(images/services-4.jpg)"></div>
 										<div class="desc">
 											<h3>Painting &amp; Tiling</h3>
 										</div>
 									</a>
-									<a href="services.html" class="services-wrap animate-box" data-animate-effect="fadeInRight">
+									<a href="services.php" class="services-wrap animate-box" data-animate-effect="fadeInRight">
 										<div class="services-img" style="background-image: url(images/services-5.jpg)"></div>
 										<div class="desc">
 											<h3>Kitchen Remodeling</h3>
@@ -315,7 +314,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-1.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 01</a></h3>
+										<h3><a href="work.php">Work 01</a></h3>
 										<span>Building</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -330,7 +329,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-2.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 02</a></h3>
+										<h3><a href="work.php">Work 02</a></h3>
 										<span>House, Apartment</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -345,7 +344,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-3.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 03</a></h3>
+										<h3><a href="work.php">Work 03</a></h3>
 										<span>Dining Room</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -360,7 +359,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-4.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 04</a></h3>
+										<h3><a href="work.php">Work 04</a></h3>
 										<span>House, Building</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -375,7 +374,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-5.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 05</a></h3>
+										<h3><a href="work.php">Work 05</a></h3>
 										<span>Condo, Pad</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -390,7 +389,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="project" style="background-image: url(images/img-6.jpg);">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 06</a></h3>
+										<h3><a href="work.php">Work 06</a></h3>
 										<span>Table, Chairs</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
@@ -416,30 +415,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="row">
 						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
-								<a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+								<a href="blog.php" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
 								<div class="desc">
 									<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-									<h3><a href="blog.html">Renovating National Gallery</a></h3>
+									<h3><a href="blog.php">Renovating National Gallery</a></h3>
 									<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
-								<a href="blog.html" class="blog-img"><img src="images/blog-2.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+								<a href="blog.php" class="blog-img"><img src="images/blog-2.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
 								<div class="desc">
 									<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-									<h3><a href="blog.html">Wordpress for a Beginner</a></h3>
+									<h3><a href="blog.php">Wordpress for a Beginner</a></h3>
 									<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
-								<a href="blog.html" class="blog-img"><img src="images/blog-3.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+								<a href="blog.php" class="blog-img"><img src="images/blog-3.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
 								<div class="desc">
 									<span><small>April 14, 2018 </small> | <small> Inspiration </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-									<h3><a href="blog.html">Make website from scratch</a></h3>
+									<h3><a href="blog.php">Make website from scratch</a></h3>
 									<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 								</div>
 							</div>
@@ -452,7 +451,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<h2>Get in Touch!</h2>
+							<h2>Mantente en contacto</h2>
 						</div>
 					</div>
 					<div class="row">
