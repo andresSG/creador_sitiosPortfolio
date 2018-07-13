@@ -150,6 +150,12 @@ class ProyectController extends Controller {
 				$infoDel = DB::table('informacion_contactos')
 					->where('id_contacto', $proyectoDel->contacto_id)->delete(); //obtenemos contacto y
 				//borramos contacto y se borra el proyecto asociado (on delete cascade)
+
+				$ruteOUT = DB::table('master') //borramos el zip si existe generado
+					->where('key', 'out_path')->get()->first()->value;
+				if (is_file(public_path($ruteOUT . $proyectoDel->nombre_proyecto . '.zip'))) {
+					unlink(public_path($ruteOUT . $proyectoDel->nombre_proyecto . '.zip'));
+				}
 			}
 
 			return view('home')->with('success', 'Proyect has been Deleted');

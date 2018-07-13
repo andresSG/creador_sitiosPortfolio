@@ -72,6 +72,15 @@ figure {
   overflow: hidden;
   position: relative; }
 
+#colorlib-aside::-webkit-scrollbar { 
+    display: none; 
+}
+
+aside{
+  overflow: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 #colorlib-aside {
   padding-top: 3em;
   padding-bottom: 40px;
@@ -83,6 +92,7 @@ figure {
   top: 0;
   left: 0;
   overflow-y: scroll;
+  overflow: hidden;
   z-index: 1001;
   background: #2C2C2C;
   -webkit-transition: 0.5s;

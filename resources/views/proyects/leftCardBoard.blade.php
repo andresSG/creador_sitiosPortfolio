@@ -25,7 +25,7 @@
         	<i class="fas fa-archive"> Proyects Menu - </i>
         	({{$proyectos = DB::table('proyectos')->where('creador_id', $id_user)->count()}})
         	<a href="{{route('newProyect')}}" class="btn btn-success icons-right" role="button"><i class="fas fa-plus-square"> Add </i></a>
-        	<button class="btn btn-danger icons-right" type="submit" form="proyectosDel" onclick="return confirm('¿Desea eliminar usuario/s?')" value="submit"><i class='fas fa-trash-alt' > Delete </i></button>
+        	<button class="btn btn-danger icons-right" type="submit" form="proyectosDel" onclick="return confirm('¿Desea eliminar proyecto/s?')" value="submit"><i class='fas fa-trash-alt' > Delete </i></button>
 		</div>
 
         <div class="card-body">
