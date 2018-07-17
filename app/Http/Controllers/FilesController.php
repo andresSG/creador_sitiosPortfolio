@@ -56,20 +56,45 @@ class FilesController extends Controller {
 		$contenido = "";
 		foreach ($colProyectos as $colProyect) {
 			//solo se mostrarán los campos diferentes a updated...etc
-			if ($colProyect == "created_at" or $colProyect == "updated_at" or $colProyect == "tipoProyecto_id" or $colProyect == "id" or $colProyect == "contacto_id" or $colProyect == "creador_id") {
+			if ($colProyect == "created_at" or $colProyect == "n_exports" or $colProyect == "updated_at" or $colProyect == "tipoProyecto_id" or $colProyect == "id" or $colProyect == "contacto_id" or $colProyect == "creador_id") {
 				//nothing
 			} else {
-				$contenido .= $colProyect . "=" . $proyectosData->$colProyect . "\r\n";
+				$contenido .= $colProyect . "=" . str_replace("\n", "<br>", $proyectosData->$colProyect) . "\r\n";
 			}
 		}
 		foreach ($colContactos as $colContact) {
 			if ($colContact == "created_at" or $colContact == "updated_at" or $colContact == "id_contacto") {
 			} else {
-				$contenido .= $colContact . "=" . $contactosData->$colContact . "\r\n";
+				$contenido .= $colContact . "=" . str_replace("\n", "<br>", $proyectosData->$colProyect) . "\r\n";
 			}
 
 		}
 
+		fwrite($fp, $contenido);
+		fclose($fp);
+	}
+
+	private function loadProperties_cookie() {
+		//creará un lector para el fichero properties.txt
+		//leerá el fichero y cargará los datos en cookies y en el documento podremos leer cada cookie
+		$fp = fopen($ruta . "/lectorProperties.php", "w+") or die("Unable to open file!");
+		//borraremos all cookies
+		$contenido = "<?php function obtainData($" . "clave_obtener){
+				$" . "fp = fopen('properties.txt', 'r');
+				$" . "propiedades = array();
+				$" . "valorDevuelto= '';
+				while (!feof($" . "fp)){
+				    $" . "linea = fgets($" . "fp);
+				    list($" . "clave, $" . "valor) = explode('=', $" . "linea);
+				    $" . "propiedades[$" . "clave] = $" . "valor;" .
+		//aqui escribiremos los cookies
+		"}
+
+			fclose($" . "fp);
+
+			}
+
+			?>";
 		fwrite($fp, $contenido);
 		fclose($fp);
 	}
